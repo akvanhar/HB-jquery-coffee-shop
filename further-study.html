@@ -62,11 +62,30 @@
         var myRevenue = revenue();
         myRevenueMessage.innerHTML = "Today's revenues: " + myRevenue;
 
-        myImage.attr('src', "static/coffee_machine.jpg");
-        setTimeout(function () { myImage.attr('src', "static/coffee_mug.jpg"); }, 500);
-        setTimeout(function () { myImage.attr('src', "static/coffee_beans.jpg"); }, 1500);
-    }
+        //fades out the coffebeans
+        myImage.fadeOut(300);
 
+        //set Timer to start fading in the coffee machine
+        setTimeout(function () { 
+            myImage.attr('src', "static/coffee_machine.jpg").fadeIn(400);
+            setTimeout(function() {
+                myImage.attr('src', "static/coffee_machine.jpg").fadeOut(400);
+            }, 600);
+        }, 300);
+
+        //set timer for fading in/out mug
+        setTimeout(function () { 
+            myImage.attr('src', "static/coffee_mug.jpg").fadeIn(400);
+            setTimeout(function() {
+                myImage.attr('src', "static/coffee_mug.jpg").fadeOut(400);
+            }, 600);
+        }, 1300);
+
+        setTimeout(function () { 
+            myImage.attr('src', "static/coffee_beans.jpg").fadeIn(400);
+        }, 2300);
+        
+}
     // Create variables for Espresso, Latte, and Hot Chocolate;
     // and add an event listener to each that calls make_coffee
     var espresso = $("#espresso");
